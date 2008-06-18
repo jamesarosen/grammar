@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: String</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />String</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/grammar/ext/string_rb.html">lib/grammar/ext/string.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000001">conjugate</a></li>
+  <li><a href="#M000005">first_person_plural</a></li>
+  <li><a href="#M000002">first_person_singular</a></li>
+  <li><a href="#M000006">second_person_plural</a></li>
+  <li><a href="#M000003">second_person_singular</a></li>
+  <li><a href="#M000007">third_person_plural</a></li>
+  <li><a href="#M000004">third_person_singular</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000001"></a><b>conjugate</b>(person, number)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show source</a> ]</p>
+  <div id="M000001_source" class="dyn-source">
+<pre>
+   <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 5</span>
+5:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conjugate</span>(<span class="ruby-identifier">person</span>, <span class="ruby-identifier">number</span>)
+6:     <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Conjugator</span><span class="ruby-operator">::</span><span class="ruby-identifier">conjugate</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">person</span>, <span class="ruby-identifier">number</span>)
+7:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000005"></a><b>first_person_plural</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show source</a> ]</p>
+  <div id="M000005_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first_person_plural</span>
+22:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">FIRST</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">PLURAL</span>)
+23:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000002"></a><b>first_person_singular</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show source</a> ]</p>
+  <div id="M000002_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first_person_singular</span>
+10:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">FIRST</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">SINGULAR</span>)
+11:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000006"></a><b>second_person_plural</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show source</a> ]</p>
+  <div id="M000006_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 25</span>
+25:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">second_person_plural</span>
+26:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">SECOND</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">PLURAL</span>)
+27:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000003"></a><b>second_person_singular</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show source</a> ]</p>
+  <div id="M000003_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 13</span>
+13:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">second_person_singular</span>
+14:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">SECOND</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">SINGULAR</span>)
+15:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000007"></a><b>third_person_plural</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show source</a> ]</p>
+  <div id="M000007_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 29</span>
+29:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">third_person_plural</span>
+30:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">THIRD</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">PLURAL</span>)
+31:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000004"></a><b>third_person_singular</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000004_source')" id="l_M000004_source">show source</a> ]</p>
+  <div id="M000004_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/ext/string.rb, line 17</span>
+17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">third_person_singular</span>
+18:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Person</span><span class="ruby-operator">::</span><span class="ruby-constant">THIRD</span>, <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span><span class="ruby-operator">::</span><span class="ruby-constant">SINGULAR</span>)
+19:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

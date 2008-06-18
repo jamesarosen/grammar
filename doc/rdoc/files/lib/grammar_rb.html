@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>File: grammar.rb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
+  <tr><td>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
+      <td class="file-title" colspan="2"><span class="file-title-prefix">File</span><br />grammar.rb</td>
+      <td align="right">
+        <table border='0' cellspacing="0" cellpadding="2">
+          <tr>
+            <td>Path:</td>
+            <td>lib/grammar.rb
+            </td>
+          </tr>
+          <tr>
+            <td>Modified:</td>
+            <td>Wed Jun 18 13:34:18 -0400 2008</td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+</table><br />
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+<a href="../../classes/Grammar.html">Grammar</a> adds verb and pronoun
+inflection support to ActiveSupport.
+</p>
+<p>
+With <a href="../../classes/Grammar.html">Grammar</a>, you can do things
+like
+</p>
+<pre>
+  'am'.second_person_plural
+  # =&gt; 'are'
+
+  'have'.third_person_singular
+  # =&gt; 'has'
+</pre>
+<p>
+and
+</p>
+<pre>
+  @current_user = @john
+  @user_to_display = @lucy
+  Grammar::Pronoun.noun_or_pronoun(@user_to_display, @current_user)
+  # =&gt; 'John'
+
+  @current_user = @lucy
+  Grammar::Pronoun.pronoun_or_noun(@user_to_display, @current_user)
+  # =&gt; 'you'
+</pre>
+<p>
+If you&#8216;re using Rails (specifically, ActionPack), you can do the
+following:
+</p>
+<pre>
+  # in app/controllers/news_controller.rb:
+  class NewsController &lt; ApplicationController
+    is_grammatical
+    ...
+    append_before_filter :load_grammatical_context
+    ...
+    def load_grammatical_context
+      Grammar::GrammaticalContext.new(:audience =&gt; self.current_user)
+    end
+  end
+
+  # in app/views/news/index.html.erb:
+  ...
+  &lt;% @news_items.each do |item| -%&gt;
+    &lt;% with_grammatical_context(:subject =&gt; item.follower, :object =&gt; item.followee) do |gc| -%&gt;
+      &lt;%= gc.subject %&gt; &lt;%= gc.conjugate('is') %&gt; now following &lt;%= gc.object %&gt;.
+    &lt;% end -%&gt;
+  &lt;% end -%&gt;
+</pre>
+</div>
+
+  <div class="sectiontitle">Required Files</div>
+  <ul>
+  <li>grammar/case</li>
+  <li>grammar/gender</li>
+  <li>grammar/number</li>
+  <li>grammar/person</li>
+  <li>grammar/pronoun</li>
+  <li>grammar/conjugation</li>
+  <li>grammar/conjugator</li>
+  <li>grammar/conjugations</li>
+  <li>grammar/grammatical_context</li>
+  </ul>
+
+
+
+
+
+
+
+
+</div>
+
+  </div>
+
+    </body>
+</html>

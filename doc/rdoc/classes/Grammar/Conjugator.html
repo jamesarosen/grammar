@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Grammar::Conjugator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Grammar::Conjugator</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/grammar/conjugator_rb.html">lib/grammar/conjugator.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+Parses Strings into VerbProxies and vice-versa.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000020">conjugate</a></li>
+  <li><a href="#M000021">conjugations</a></li>
+  </ul>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Class <a href="Conjugator/Conjugations.html" class="link">Grammar::Conjugator::Conjugations</a><br />
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000020"></a><b>conjugate</b>(verb, person, number)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000020_source')" id="l_M000020_source">show source</a> ]</p>
+  <div id="M000020_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/conjugator.rb, line 9</span>
+ 9:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conjugate</span>(<span class="ruby-identifier">verb</span>, <span class="ruby-identifier">person</span>, <span class="ruby-identifier">number</span>)
+10:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">verb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verb</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">conjugations</span>.<span class="ruby-identifier">non_conjugations</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">verb</span>.<span class="ruby-identifier">downcase</span>)
+11:     <span class="ruby-identifier">conjugations</span>.<span class="ruby-identifier">conjugations</span>.<span class="ruby-identifier">find</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+12:       <span class="ruby-identifier">c</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">verb</span>
+13:     <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">conjugate</span>(<span class="ruby-identifier">verb</span>, <span class="ruby-identifier">person</span>, <span class="ruby-identifier">number</span>)
+14:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000021"></a><b>conjugations</b>() {|Grammar::Conjugator::Conjugations.instance| ...}
+  </div>
+  <div class="description">
+  <p>
+Yields a singleton instance of Grammar::Inflector::Inflections so you can
+specify additional inflector rules. (All the following rules are supplied
+by default.)
+</p>
+<p>
+Example:
+</p>
+<pre>
+  Grammar::Conjugator.conjugations do |c|
+    # all forms are 'came'
+    c.do_not_conjugate 'came'
+
+    # present tense, ending in h: add 'es' on 3rd singular
+    c.conjugate(/^.*[h]$/i) do |word, person, number|
+      if person == Grammar::Person::THIRD &amp;&amp; number == Grammar::Number::SINGULAR
+        word + 'es'
+      else
+        word
+      end
+    end
+
+    # Irregular English verb:
+    c.irregular('was', 'were', 'was', 'were', 'were', 'were')
+
+    # a Spanish verb:
+    c.irregular('estoy', 'estás', 'está', 'estamos', 'estáis', 'estan')
+  end
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show source</a> ]</p>
+  <div id="M000021_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/conjugator.rb, line 67</span>
+67:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conjugations</span>
+68:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+69:       <span class="ruby-keyword kw">yield</span> <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Conjugator</span><span class="ruby-operator">::</span><span class="ruby-constant">Conjugations</span>.<span class="ruby-identifier">instance</span>
+70:     <span class="ruby-keyword kw">else</span>
+71:       <span class="ruby-constant">Grammar</span><span class="ruby-operator">::</span><span class="ruby-constant">Conjugator</span><span class="ruby-operator">::</span><span class="ruby-constant">Conjugations</span>.<span class="ruby-identifier">instance</span>
+72:     <span class="ruby-keyword kw">end</span>
+73:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

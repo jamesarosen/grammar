@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Grammar::Case</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Grammar::Case</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/grammar/case_rb.html">lib/grammar/case.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000026">parse</a></li>
+  <li><a href="#M000027">valid_case?</a></li>
+  <li><a href="#M000028">validate_case!</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">SUBJECT</td>
+    <td>=</td>
+    <td class="attr-value">:subject</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">NOMINATIVE</td>
+    <td>=</td>
+    <td class="attr-value">SUBJECT</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">POSSESSIVE</td>
+    <td>=</td>
+    <td class="attr-value">:possessive</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">GENETIVE</td>
+    <td>=</td>
+    <td class="attr-value">POSSESSIVE</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">DIRECT_OBJECT</td>
+    <td>=</td>
+    <td class="attr-value">:direct_object</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">ACCUSATIVE</td>
+    <td>=</td>
+    <td class="attr-value">DIRECT_OBJECT</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">INDIRECT_OBJECT</td>
+    <td>=</td>
+    <td class="attr-value">:indirect_object</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">DATIVE</td>
+    <td>=</td>
+    <td class="attr-value">INDIRECT_OBJECT</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">REFLEXIVE</td>
+    <td>=</td>
+    <td class="attr-value">:reflexive</td>
+  </tr>
+  <tr valign='top'>
+    <td class="attr-name">ALLOWED_VALUES</td>
+    <td>=</td>
+    <td class="attr-value">[SUBJECT, DIRECT_OBJECT, INDIRECT_OBJECT, REFLEXIVE, POSSESSIVE]</td>
+  </tr>
+  </table>
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000026"></a><b>parse</b>(kase)
+  </div>
+  <div class="description">
+  <p>
+Returns <tt>kase</tt> if it is a valid pronoun case; otherwise, raises an
+ArgumentError.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000026_source')" id="l_M000026_source">show source</a> ]</p>
+  <div id="M000026_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/case.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">kase</span>)
+28:     <span class="ruby-identifier">validate_case!</span>(<span class="ruby-identifier">kase</span>)
+29:     <span class="ruby-identifier">kase</span>
+30:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000027"></a><b>valid_case?</b>(kase)
+  </div>
+  <div class="description">
+  <p>
+Whether <tt>kase</tt> is a valid pronoun case.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000027_source')" id="l_M000027_source">show source</a> ]</p>
+  <div id="M000027_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/case.rb, line 33</span>
+33:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">valid_case?</span>(<span class="ruby-identifier">kase</span>)
+34:     <span class="ruby-constant">ALLOWED_VALUES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">kase</span>)
+35:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000028"></a><b>validate_case!</b>(kase)
+  </div>
+  <div class="description">
+  <p>
+Raises an ArgumentError unless <tt>kase</tt> is a valid pronoun case.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000028_source')" id="l_M000028_source">show source</a> ]</p>
+  <div id="M000028_source" class="dyn-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/grammar/case.rb, line 38</span>
+38:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">validate_case!</span>(<span class="ruby-identifier">kase</span>)
+39:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'#{kase} is not a valid pronoun case'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">valid_case?</span>(<span class="ruby-identifier">kase</span>)
+40:   <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>
